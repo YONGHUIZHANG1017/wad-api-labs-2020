@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import express from 'express';
 import moviesRouter from './api/movies';
 import bodyParser from 'body-parser';
-import {loadUsers} from './seedData'
+import {loadUsers} from './seedData';
+import usersRouter from './api/users';
 dotenv.config();
 const errHandler = (err, req, res, next) => {
   /* if the error in development then send stack trace to display whole error,
@@ -24,6 +25,7 @@ app.use('/api/movies', moviesRouter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(errHandler);
+app.use('/api/users', usersRouter);
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
 });
