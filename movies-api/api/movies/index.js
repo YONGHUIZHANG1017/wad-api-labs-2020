@@ -2,7 +2,7 @@ import express from 'express';
 import {
   getMovies, getMovie, getMovieReviews
 } from '../tmdb-api';
-
+import movieModel from '../api/movies/movieModel';
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
