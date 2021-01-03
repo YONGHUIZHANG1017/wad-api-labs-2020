@@ -1,7 +1,10 @@
 import express from 'express';
 import User from './userModel';
 import jwt from 'jsonwebtoken';
+<<<<<<< HEAD
 import movieModel from '../api/movies/movieModel';
+=======
+>>>>>>> 75d34e9c79dc1ff46fbb8770b09dcf8a96eaa74e
 const router = express.Router(); // eslint-disable-line
 
 // Get all users

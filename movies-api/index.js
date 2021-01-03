@@ -6,8 +6,12 @@ import bodyParser from 'body-parser';
 import {loadUsers, loadMovies} from './seedData';
 import usersRouter from './api/users';
 import session from 'express-session';
+<<<<<<< HEAD
 import passport from './authenticate';
 import genresRouter from './api/genres';
+=======
+import passport from './authenticate'
+>>>>>>> 75d34e9c79dc1ff46fbb8770b09dcf8a96eaa74e
 dotenv.config();
 const errHandler = (err, req, res, next) => {
   /* if the error in development then send stack trace to display whole error,
@@ -37,7 +41,10 @@ app.use(session({
 }));
 app.use('/api/users', usersRouter);
 app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
+<<<<<<< HEAD
 app.use('/api/users', genresRouter);
+=======
+>>>>>>> 75d34e9c79dc1ff46fbb8770b09dcf8a96eaa74e
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
 });
