@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import {loadUsers} from './seedData';
 import usersRouter from './api/users';
 import session from 'express-session';
-import authenticate from './authenticate';
+import passport from './authenticate'
 dotenv.config();
 const errHandler = (err, req, res, next) => {
   /* if the error in development then send stack trace to display whole error,
@@ -24,6 +24,7 @@ if (process.env.SEED_DB) {
 }
 app.use(express.static('public'));
 app.use('/api/movies', moviesRouter);
+app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(errHandler);
@@ -33,7 +34,7 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use('/api/users', usersRouter);
-app.use('/api/movies', authenticate, moviesRouter);
+app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
 });
